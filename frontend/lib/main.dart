@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter Demo'),
     );
   }
 }
@@ -50,6 +50,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final responseData = jsonDecode(response.body);
+        setState(() {
+          result = responseData.toString();
+        });
         print('Response JSON: $responseData');
       } else {
         print('Request failed with status: ${response.statusCode}');
